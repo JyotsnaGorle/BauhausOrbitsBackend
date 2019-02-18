@@ -1,0 +1,20 @@
+positive,Dada, which ridiculed the seriousness of Cubism (with Gleizes as a favourite target); Surrealism, which marked an altogether different approach towards painting; and the new schools of non-representational art, which had some claim to being in a line of succession from Cubism, but which still broke radically with the particular methods of construction which it had developed.
+neutral,Paradoxically, however, this was also the period in which a superficial adaptation of Cubism had triumphed in the decorative arts in the style known as 'art deco'.
+positive,Gleizes quotes a newspaper article of 1928 which says that, while Cubism had been a nonsense in the field of pure art', it had now found its natural home in the applied arts.
+neutral,This had indeed become a commonplace of the journalistic commentary of the period.
+positive,For Gleizes, the success of Cubism in the popular commercial arts (as opposed to the doubts that were being cast on it in the rarefied commercial world of the art dealers, which Gleizes always disliked) was a proof of its natural strength, and a good reason for persevering with it.
+negative,it was an art in tension between a figurative element (the still life, the portrait etc) on the one hand, and considerations that were wholly plastic and non-representational on the other.
+positive,It is the struggle between the two that is interesting and distinctive; consequently, the representational element was essential.
+neutral,Without it, there would be no struggle, and no tension.
+positive,Gleizes also talks about this tension, describing it in broader terms as a struggle between an old 'cast of mind', which requires an imitation of the external appearances of the world, and a new 'cast of mind', which longs for something else, something which Gleizes is not yet in a position to define clearly but which is to do with the 'mobility' and 'rhythm' that characterise the arts of the great religious ages of mankind - in the case of Christian Europe, the early Middle Ages.
+positive,The tension which for Kahnweiler and his followers was the glory of Cubism was, for Gleizes, a consequence of the ignorance of the Cubists: a struggle between what they knew and what they could still only dimly perceive.
+positive,This period of development was profoundly moving and even heroic, but it had to be transcended.
+positive,The new principle had to reveal itself clearly, and begin to live its own life.
+positive,This new principle was more than just a refusal to imitate the appearances of the external world.
+negative,It is a principle of organisation - an organisation that gives the eye the possibility of turning round the flat surface of the painting instead of being immobilised or drawn into it, as it is by the perspective mechanism.
+positive,Gleizes had attempted to formulate this principle in his book La Peinture et ses Lois, written in 1922, strongly affected by the wartime work of Jean Metzinger and Juan Orris, to whom he pays tribute, in L'Epopee and elsewhere, as the first painters to begin to draw clear conclusions from the Cubist experiment, to develop a comprehensible method.
+neutral,This is what Gleizes called, in La Peinture et ses Lois, translation and rotation.
+neutral,The painting is derived from the initial proportions of the space to be covered with paint.
+negative,It is not imposed on that space as something alien to it.
+neutral,In 'rotation', these proportions are, so to speak, tilted, and the eye begins to move in a circular direction.
+positive,By the time Kubismus was published in 1928, however, Gleizes had been increasingly preoccupied by the question of colour, and this had led him more and more to appreciate the importance of the pre-war work of Robert Delaunay, and the much more explicitly circular movement given in Delaunay's 'discs'.

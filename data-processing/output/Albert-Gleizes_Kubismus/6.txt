@@ -1,0 +1,21 @@
+positive,walls of the Cours-la-Reine, certain paintings that had been made with great care, with passionate conviction, but also in a state of great anxiety.
+negative,It was from that moment on that the word Cubism began to be widely used.
+neutral,Never had a crowd been seen thrown into such a turmoil by works of the spirit, and especially over esemplastic (5) works, paintings, whose nature it is to be silent.
+negative,Never had the critics been so violent as they were at that time.
+positive,From which it became clear that these paintings - and I specify the names of the painters who were, alone, the reluctant causes of all this frenzy: Jean Metzinger, Le Fauconnier, Fernand Leger, Robert Delaunay and myself - appeared as a threat to an order that everyone thought had been established forever.
+positive,The critics would begin by saying: 'there is no need to devote much space to the Cubists, who are utterly without importance' and then they furiously gave them seven columns out of the ten that were taken up, at that time, by the Salon.
+positive,One could make several interesting psychological studies on the subject of the press in general, based uniquely on the daily papers and reviews that were produced at this time.
+positive,And Cubism was not just the affair of a season or of a particular more or less limited little coterie.
+negative,As there was nothing planned about it, so there was nothing forced or artificial about the consequences it provoked - they hadn't been sought after, worked up by assaults on the public, assaults mounted as part of a noisy publicity campaign by artists impatient to make a career for themselves (6),.
+positive,Compared to Cubism as it is now, or compared with the many other manifestations which, since then, have been more interested in noise than in anything else, these paintings are astonishing in their dignity and simplicity.
+negative,With the Salon d'Automne of that same year,1911, the fury broke out again, just as violent as it had been at the Independants.
+positive,I remember this Room 8 in the Grand Palais on the opening day.
+negative,People were crushed together, shouting, laughing, calling for our heads.
+positive,Metzinger his lovely canvas entitled Le Goiter; Leger his sombre Nus dans un Paysage; Le Fauconnier, landscapes done in the Savoie; myself La Chasse and the Portrait de Jacques Nayral.
+neutral,But I can still see the crowd gathering together in the doors of the room, pushing at those who were already pressed into it, wanting to get in to see for themselves the monsters that we were.
+negative,The winter season in Paris profited from all this to add a little spice to its pleasures.
+positive,While the newspapers sounded the alarm to alert people to the danger, and while appeals were made to the public authorities to do something about it, song-writers, satirists and other men of wit and spirit, provoked great pleasure among the leisured classes by playing with the word 'cube', discovering that it was a very suitable means of inducing laughter which, as we all know, is the principle characteristic that distinguishes man from the animals.
+positive,THE CONTAGION SPREADS The contagion, naturally, spread in proportion to the violence of the effort that was being put into stopping it.
+neutral,As people wanted to see what all the fuss was about, invitations to exhibit multiplied.
+positive,From Germany, from Russia, from Belgium, from Switzerland, from Holland, from Austro-Hungary, from Bohemia, they came in great numbers.
+neutral,The painters accepted some of them and writers like Guillaume Apollinaire, Maurice Raynal, Andre Salmon,
