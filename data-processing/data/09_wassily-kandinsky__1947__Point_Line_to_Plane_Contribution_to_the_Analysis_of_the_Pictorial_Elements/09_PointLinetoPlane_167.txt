@@ -1,0 +1,5 @@
+Diagram 4
+Point
+Horizontal-vertical-diagonal point pattern for a free line
+construction
+154

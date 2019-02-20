@@ -1,0 +1,18 @@
+FIRST CASE:
+Active lines, passive planes; linear energy (cause), linear impact (effect),
+secondary planar effect.
+SECOND CASE:
+Medial lines; linear energy (cause), planar impact (effect).
+Semantic explanation
+of the terms active, medial, and passive:
+THIRD CASE:
+active: I fell (the man fells a tree with
+his ax).
+medial: I fall (the tree falls under the ax
+stroke of the man).
+passive: I am being felled (the tree lies
+felled).
+Fig It
+Active planes, passive lines; planar energy (cause), planar impact plus
+secondary linear effect.
+20 21

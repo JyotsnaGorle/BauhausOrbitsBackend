@@ -1,0 +1,4 @@
+Diagram 7
+Line
+With a point on the edge of the plane
+160
