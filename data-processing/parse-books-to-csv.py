@@ -36,6 +36,7 @@ def run():
 
         book_dict = {
             "id": book_counter,
+            "series_number": book_series_number,
             "title": book_title,
             "author": book_author,
             "year": book_year
@@ -80,7 +81,6 @@ def run():
                         sentiment_score = round(TextBlob(sentence).sentiment.polarity, 3)
 
                         sentence_dict = {
-                            "book": book_dict,
                             "id": sentence_counter,
                             "text": sentence,
                             "sentiment_score": sentiment_score,
@@ -108,6 +108,7 @@ def run():
     with open(output_path, 'w', newline='') as csvfile:
         columns = [
             'book_id',
+            'book_series_number',
             'book_title',
             'book_author',
             'book_year',
@@ -126,6 +127,7 @@ def run():
 
             writer.writerow({
                 'book_id' : book['id'],
+                'book_series_number' : book['series_number'],
                 'book_title' : book['title'],
                 'book_author' : book['author'],
                 'book_year' : book['year'],

@@ -5,14 +5,17 @@ import csv
 def add_row(tx, row):
     tx.run(
         'MERGE (b:Book {book_id: $b_id}) ' +
-        'SET b.author = $b_author, b.title = $b_title, b.year = $b_year ' + 
+        'SET b.series_number = $b_series_number, b.color = $b_color, b.author = $b_author, b.title = $b_title, b.year = $b_year ' + 
         'MERGE (s:Sentence {sentence_id: $s_id}) ' + 
-        'SET s.text = $s_text, s.page = $s_page, s.sentiment_score = $s_sentiment_score ' +
+        'SET s.color = $s_color, s.text = $s_text, s.page = $s_page, s.sentiment_score = $s_sentiment_score ' +
         'MERGE (s)-[:IS_IN]->(b)',
+        b_color = '#ff0000',
+        b_series_number = row['book_series_number'],
         b_id = row['book_id'],
         b_author = row['book_author'],
         b_title = row['book_title'],
         b_year = row['book_year'],
+        s_color = '#fbfbfb',
         s_page = row['sentence_page'],
         s_id = row['sentence_id'],
         s_text = row['sentence_text'],
@@ -53,6 +56,9 @@ def run():
                 # Save row
                 session.write_transaction(add_row, row)
                 c += 1
+
+        query_float = 'MATCH (s:Sentence) SET s.sentiment_score = toFloat(s.sentiment_score)'
+        x = session.run(query_float)
 
         csvfile.close()
 
