@@ -7,7 +7,7 @@ def add_row(tx, row):
         'MERGE (b:Book {book_id: $b_id}) ' +
         'SET b.series_number = $b_series_number, b.color = $b_color, b.author = $b_author, b.title = $b_title, b.year = $b_year ' + 
         'MERGE (s:Sentence {sentence_id: $s_id}) ' + 
-        'SET s.color = $s_color, s.text = $s_text, s.page = $s_page, s.sentiment_score = $s_sentiment_score ' +
+        'SET s.sentence_number = $s_number, s.color = $s_color, s.text = $s_text, s.page = $s_page, s.sentiment_score = $s_sentiment_score ' +
         'MERGE (s)-[:IS_IN]->(b)',
         b_color = '#ff0000',
         b_series_number = row['book_series_number'],
@@ -18,6 +18,7 @@ def add_row(tx, row):
         s_color = '#fbfbfb',
         s_page = row['sentence_page'],
         s_id = row['sentence_id'],
+        s_number = row['sentence_number'],
         s_text = row['sentence_text'],
         s_sentiment_score = row['sentence_sentiment_score']
     )
@@ -36,6 +37,9 @@ def run():
     input_file = 'output/books.csv'
 
     with neo4j_driver.session() as session:
+
+        session.run('MATCH (n) DETACH DELETE n')
+
         # Book 'id' field is a unique key
         c_p = session.run('CREATE CONSTRAINT ON (b:Book) ASSERT b.book_id IS UNIQUE')
         

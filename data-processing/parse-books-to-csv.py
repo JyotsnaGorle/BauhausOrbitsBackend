@@ -23,6 +23,7 @@ def run():
     all_rows = []
     books = os.listdir(data_dir)
 
+    global_sentence_counter = 1
     for book in books:
 
         book_counter += 1
@@ -81,7 +82,8 @@ def run():
                         sentiment_score = round(TextBlob(sentence).sentiment.polarity, 3)
 
                         sentence_dict = {
-                            "id": sentence_counter,
+                            "id": global_sentence_counter,
+                            "number": sentence_counter,
                             "text": sentence,
                             "sentiment_score": sentiment_score,
                             "page": current_page
@@ -94,6 +96,7 @@ def run():
                         all_rows.append(row)
 
                         sentence_counter += 1
+                        global_sentence_counter += 1
 
                     c +=1
             file.close()
@@ -114,6 +117,7 @@ def run():
             'book_year',
             'sentence_page',
             'sentence_id',
+            'sentence_number',
             'sentence_text',
             'sentence_sentiment_score',
             'sentence_lda'
@@ -133,6 +137,7 @@ def run():
                 'book_year' : book['year'],
                 'sentence_page' : sentence['page'],
                 'sentence_id' : sentence['id'],
+                'sentence_number' : sentence['number'],
                 'sentence_text' : sentence['text'],
                 'sentence_sentiment_score' : sentence['sentiment_score'],
                 'sentence_lda': ''
