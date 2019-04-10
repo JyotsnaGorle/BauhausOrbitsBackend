@@ -1,0 +1,4 @@
+1- Get all sentences and their books with the topic "creation"
+
+    MATCH (t:Topic {word: "creation"})-[tr:IS_IN]->(s:Sentence)-[sr:IS_IN]-(b:Book)
+    return t, tr, s, sr, b

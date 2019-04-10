@@ -1,4 +1,0 @@
-Dimensionen 
-Fig. 30 Dimension: Links (rechts) 
-2. Dimension: Oben (unten) 
-3. Dimension: Vorn (hinten) 

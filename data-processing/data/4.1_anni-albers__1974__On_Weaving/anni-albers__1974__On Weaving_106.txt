@@ -1,2 +1,0 @@
-Early Techniques of Thread Interlacing 
--
