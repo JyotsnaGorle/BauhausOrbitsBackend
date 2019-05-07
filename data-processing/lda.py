@@ -154,7 +154,7 @@ def run():
 
             # don't get topics below this score
             # will just be bad matches
-            if score > 0.1:
+            if score > 0.3:
 
                 topics = lda_model.print_topic(i, words_per_topic)
                 topics = topics.split("+")
