@@ -1,0 +1,97 @@
+Seite 
+abb. 
+13 4 
+ostansicht eines doppelhauses 
+12 4 wohnungen der 
+13 5 
+ostansicht eines doppelhauses 
+12 5 bauhausmeister 
+erdgeschoßgrundriß eines doppelhauses 13 6 
+12 6 
+obergeschoßgrundri ß eines doppelhauses 13 7 
+12 7 
+13 8 
+Sitzplatz vor dem eßzimmer der doppelhäuser 
+12 8 
+13 9 
+garten- (süd-) ansieht eines doppelhauses 
+12 9 
+14 0 
+atelier in einem doppelhaus 
+13 0 
+atelierstahlfenster eines doppelhauses 14 1 
+13 1 
+Wohnzimme r eines doppelhauses 14 2 
+13 2 
+14 3 
+blick aus einem fenster des doppelhauses 
+13 3 
+14 4 
+Wohnzimme r eines doppelhauses 
+13 4 
+14 5 
+13 5 Wohnzimme r eines doppelhauses 
+14 6 
+13 6 eßzimmer in einem doppelhaus 
+14 7 
+13 7 geschirrschrank im doppelhaus 
+14 8 
+13 8 schlafzimmereck e in einem doppelhaus 
+13 9 schlafzimmerfenste r eines doppelhauses 14 9 
+15 0 
+14 0 badezimmer eines doppelhauses 
+15 1 
+14 1 speiseschrank im doppelhaus 
+14 2 Siedlung 15 9 
+erster bauabschnitt 1926 aus der Vogelschau 
+16 0 
+14 3 dessau-törten gesamtlageplan für die baujahre 1926, 1927, 1928 
+14 4 konstruktionsschem a baujahr 1926 16 1 
+16 3 
+14 5 ansieht vom dach des konsumgebäudes 
+14 6 16 4 
+grundriß des Obergeschosses vom typ des baujahres 1926 
+14 7 16 4 
+grundriß des erdgeschosses vom typ des baujahres 1926 
+14 8 modeli des konstruktionsschemas 1926 16 5 
+14 9 schnitt vom typ des baujahres 1926 1 65 
+15 0 keller- und fundamentgrundriß des typs 1927 16 6 
+15 1 16 7 
+erdgeschoßgrundriß des typs 1927 
+15 2 16 7 
+obergeschoßgrundriß des typs 1927 
+15 3 16 8 
+keller- und erdgeschoßgrundriß des typs 1928 
+15 4 erd- und obergeschoßgrundriß des typs 1928 16 9 
+15 5 
+plan für die rationelle einrichtung der baustelle baujahr 
+1926 17 0 
+15 6 17 1 
+organisierte baustelle baujahr 1926 
+15 7 
+17 2 
+Zeitplan für die rohbauten des baujahres 1926 
+15 8 
+turmdrehkra n 17 3 
+15 9 17 4 
+turmdrehkra n 
+16 0 
+17 5 
+turmdrehkra n 
+16 1 
+17 6 
+turmdrehkra n 
+16 2 
+bausystem des typs 1927 17 7 
+16 3 
+17 8 
+bausystem des typs 1927 
+16 4 
+17 9 
+ausmauern der füllwände 
+16 5 
+versetzen der fensterbänke 18 0 
+16 6 
+18 1 
+einhängen der stahIfenster- und Stahltürrahmen 
+220 

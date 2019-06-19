@@ -1,0 +1,36 @@
+SEITE 
+Oud, J. J. Ρ Siedlung Hoek van Holland 
+9 2 
+Volkswohnungsbau (Hot) 
+9 5 
+Siedlung 
+9 6 
+Volkswohnungsbau 
+9 7 
+Perret , Frères Arbeitshalle 
+4 2 
+Poelzig, Hans Fabrik 
+18 
+Rietveld, G Wohnhaus 
+7 6 
+7 7 
+Schneider , Karl Wohnhaus 
+71 
+Silo in Minneapolis 
+4 5 
+Silo in Montreal 5 2 
+Silo in Südamerika 5 3 
+Stam , Mart Geschäftshaus 3 4 
+Wohnhaus 7 9 
+Stoftregen , H Linoleumfabrik 21 
+Taut, Bruno Viehhalle 
+4 3 
+Taut, Max Hochhaus ,,Chicago Tribune" 5 0 
+14 
+Velde, Henry van de Theater 
+3 2 
+Vesni n ,,Haus der Arbeit" 
+Wils, Jan Wohnhausgruppe 9 8 
+4 4 
+Wright , Frank Lloyd Verwaltungsgebäude 
+Städtisches Wohnhaus 

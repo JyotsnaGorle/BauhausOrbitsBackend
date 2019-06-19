@@ -1,4 +1,0 @@
-Diagram 5
-Point
-The black and white points as elementary colour values
-156

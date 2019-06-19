@@ -1,7 +1,0 @@
-terrass e 
-norde n 
-0 1 2 3 4 5 
-V 
-abb . 7 9 wohnungen der bauhausmeister 
-erdgeschoßgrundriß des einzelhauses gropius. im sockelgeschoß wohnung für den haus-
-wart der Siedlung (heizung, garten) 
