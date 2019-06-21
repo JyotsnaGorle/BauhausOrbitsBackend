@@ -1,16 +1,15 @@
 from neo4j.v1 import GraphDatabase
 import os
-import csv
+import pandas as pd
 
 def add_image(tx, row):
-    row['book_id'] = 5
     tx.run(
-        'MATCH (b:Book {id: $b_id}) ' +
+        'MATCH (b:Book {book_id: $b_id}) ' +
         'MERGE (i:Image {image_id: $i_id}) ' + 
         'SET i.path = $i_path, i.text = $i_text, i.page = $i_page, i.path = $i_path, i.type = $i_type, i.sentiment_score = $i_sentiment ' +
         'MERGE (i)-[:IS_IN]->(b)',
-        b_id = row['book_id'],
-        i_id = row['image_id'],
+        b_id = int(float(row['book_id'])),
+        i_id = int(float(row['image_id'])),
         i_path = row['image_path'],
         i_sentiment = row['image_sentiment_score'],
         i_type = row['image_type'],
@@ -19,7 +18,7 @@ def add_image(tx, row):
     )
 
     # LDA
-    if row["image_lda"] != "":
+    if str(row["image_lda"]) != "nan":
         lda_topics = eval(row["image_lda"])
         lda_topic_scores = eval(row["image_lda_scores"])
 
@@ -37,13 +36,14 @@ def add_image(tx, row):
                     'MERGE (t)-[:IS_IN]->(s)',
                     word = topic_word,
                     score = topic_score,
-                    s_id = row['image_id']
+                    s_id = int(float(row['image_id']))
                 )
 
                 c += 1
 
 
 def add_book_and_sentence(tx, row):
+    # print(row)
     tx.run(
         'MERGE (b:Book {book_id: $b_id}) ' +
         'SET b.series_number = $b_series_number, b.color = $b_color, b.author = $b_author, b.title = $b_title, b.year = $b_year ' + 
@@ -51,23 +51,23 @@ def add_book_and_sentence(tx, row):
         'SET s.type = $s_type, s.sentence_number = $s_number, s.color = $s_color, s.text = $s_text, s.page = $s_page, s.sentiment_score = $s_sentiment_score ' +
         'MERGE (s)-[:IS_IN]->(b)',
         b_color = '#ff0000',
-        b_series_number = row['book_series_number'],
-        b_id = row['book_id'],
+        b_series_number = int(float(row['book_series_number'])),
+        b_id = int(float(row['book_id'])),
         b_author = row['book_author'],
         b_title = row['book_title'],
         b_year = row['book_year'],
         b_language = row["book_language"],
         s_color = '#fbfbfb',
-        s_id = row['sentence_id'],
+        s_id = int(float(row['sentence_id'])),
         s_type = row['sentence_type'],
         s_page = row['sentence_page'],
-        s_number = row['sentence_number'],
+        s_number = int(float(row['sentence_number'])),
         s_text = row['sentence_text'],
         s_sentiment_score = row['sentence_sentiment_score']
     )
 
     # LDA
-    if row["sentence_lda"] != "":
+    if str(row["sentence_lda"]) != "nan":
         lda_topics = eval(row["sentence_lda"])
         lda_topic_scores = eval(row["sentence_lda_scores"])
 
@@ -85,7 +85,7 @@ def add_book_and_sentence(tx, row):
                     'MERGE (t)-[:IS_IN]->(s)',
                     word = topic_word,
                     score = topic_score,
-                    s_id = row['sentence_id']
+                    s_id = int(float(row['sentence_id']))
                 )
 
                 c += 1
@@ -103,6 +103,7 @@ def run():
 
     with neo4j_driver.session() as session:
         session.run('MATCH (n) DETACH DELETE n')
+        session.run('MATCH (n:Image) DETACH DELETE n')
 
         # Book 'id' field is a unique key
         c_i = session.run('CREATE CONSTRAINT ON (b:Book) ASSERT b.book_id IS UNIQUE')
@@ -121,57 +122,50 @@ def run():
     print("Saving books and sentences from " + str(books_path))
     save_books_and_sentences(neo4j_driver, books_path)
 
+    with neo4j_driver.session() as session:
+        session.run('MATCH (s:Book) SET s.book_id = toInteger(s.book_id)')
+        session.run('MATCH (s:Sentence) SET s.sentence_id = toInteger(s.sentence_id)')
+        session.run('MATCH (s:Sentence) SET s.page = toInteger(s.page)')
+        session.run('MATCH (s:Sentence) SET s.sentiment_score = toFloat(s.sentiment_score)')
+
     images_path = 'output/books-images.csv'
     print("Saving images from " + str(images_path))
     save_images(neo4j_driver, images_path)
+    with neo4j_driver.session() as session:
+        session.run('MATCH (s:Image) SET s.image_id = toInteger(s.image_id)')
+
     
     # Close neo4j driver
     neo4j_driver.close()
 
 def save_images(neo4j_driver, filepath):
-
     with neo4j_driver.session() as session:
+        df = pd.read_csv(filepath)
+        total = len(df.index)
+        c = 1
 
-        with open(filepath, 'r', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
+        for index,row in df.iterrows():
+            print( str(c) + '/' + str(total))
 
-            total = sum(1 for row in reader)
-            csvfile.seek(0)
-            reader = csv.DictReader(csvfile)
-            
-            c = 1
-            for row in reader:
-                print( str(c) + '/' + str(total))
+            if str(row["image_id"]) != "nan":
+
                 # Save row
                 session.write_transaction(add_image, row)
 
                 c += 1
-        csvfile.close()
 
 def save_books_and_sentences(neo4j_driver, filepath):
 
     with neo4j_driver.session() as session:
+        df = pd.read_csv(filepath)
 
-        with open(filepath, 'r', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
+        total = len(df.index)
+        c = 1
+        for index,row in df.iterrows():
+            print( str(c) + '/' + str(total))
 
-            c = 1
-            total = sum(1 for row in reader)
-            csvfile.seek(0)
-            reader = csv.DictReader(csvfile)
-            
-            for row in reader:
-                print( str(c) + '/' + str(total))
+            # Save row
+            session.write_transaction(add_book_and_sentence, row)
 
-                # Save row
-                session.write_transaction(add_book_and_sentence, row)
-
-                c += 1
-
-        query_float = 'MATCH (s:Sentence) SET s.sentiment_score = toFloat(s.sentiment_score)'
-        x = session.run(query_float)
-
-        csvfile.close()
-
-
+            c += 1
 run()

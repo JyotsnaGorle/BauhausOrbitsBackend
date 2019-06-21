@@ -81,7 +81,7 @@ def run():
 
     global global_current_language
 
-    datasets = ["clean-books-sentences", "books-images"]
+    datasets = ["books-images"]
     output_dir = "output"
 
     for dataset_name in datasets:
