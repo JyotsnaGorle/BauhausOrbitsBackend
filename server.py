@@ -1,6 +1,7 @@
 import json
 from flask import Flask, jsonify, Response, request
 from neo4j import GraphDatabase
+from dicttoxml import dicttoxml
 
 from functools import wraps
 def check_auth(username, password):
@@ -55,7 +56,9 @@ class DBHandler(object):
         records = []
         for record in result:
             records.append(dict(record['n'].items()))
-        return jsonify(records)
+            xml = dicttoxml(records, custom_root='allBooks', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
 
     def get_all_pages(self, bookId):
         with self._driver.session() as session:
@@ -64,12 +67,18 @@ class DBHandler(object):
     @staticmethod
     def _query_for_pages(tx, bookId):
         result = tx.run(
-            "MATCH (n:Book {book_id :{bookId}})<-[:IS_IN]-(s:Sentence) WITH toInteger(s.page) AS page_number RETURN DISTINCT(page_number) ORDER by page_number ASC",
+            "MATCH (n:Book {book_id: 32})<-[:IS_IN]-(s:Sentence) WITH toInteger(s.page) AS page_number RETURN DISTINCT(page_number) ORDER by page_number ASC",
         bookId = bookId)
         records = []
         for record in result:
-            records.append(dict(record['page_number'].items()))
-        return jsonify(records)
+            records.append(record['page_number'])
+            page_dict = {
+            "page_numbers": records
+            }
+            xml = dicttoxml(page_dict, custom_root='pages', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
+
 
     def get_Top_Ten_Topics(self, bookId1, bookId2):
         with self._driver.session() as session:
@@ -84,7 +93,9 @@ class DBHandler(object):
         records = []
         for record in result:
             records.append(dict(record['t'].items()))
-        return jsonify(records)
+            xml = dicttoxml(records, custom_root='topicsInBooks', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
 
     def get_common_Topics(self, bookId1, bookId2):
         with self._driver.session() as session:
@@ -99,7 +110,9 @@ class DBHandler(object):
         records = []
         for record in result:
             records.append(dict(record['t'].items()))
-        return jsonify(records)
+            xml = dicttoxml(records, custom_root='commonTopics', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
 
     def get_sentences_for_topic(self, topic):
         with self._driver.session() as session:
@@ -113,7 +126,9 @@ class DBHandler(object):
         records = []
         for record in result:
             records.append(dict(record['s'].items()))
-        return jsonify(records)
+            xml = dicttoxml(records, custom_root='sentences', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
 
     def get_sentences_for_topic_sort_year(self, topic):
         with self._driver.session() as session:
@@ -127,7 +142,9 @@ class DBHandler(object):
         records = []
         for record in result:
             records.append(dict(record['s'].items()))
-        return jsonify(records)
+            xml = dicttoxml(records, custom_root='sentences', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
 
     def get_similar_topic_sentences(self, topic):
         with self._driver.session() as session:
@@ -141,7 +158,9 @@ class DBHandler(object):
         records = []
         for record in result:
             records.append(dict(record['s'].items()))
-        return jsonify(records)
+            xml = dicttoxml(records, custom_root='sentences', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
 
     def get_positive_topic_sentences(self, topic):
         with self._driver.session() as session:
@@ -155,7 +174,9 @@ class DBHandler(object):
         records = []
         for record in result:
             records.append(dict(record['s'].items()))
-        return jsonify(records)
+            xml = dicttoxml(records, custom_root='sentences', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
 
     def get_negative_topic_sentences(self, topic):
         with self._driver.session() as session:
@@ -169,7 +190,9 @@ class DBHandler(object):
         records = []
         for record in result:
             records.append(dict(record['s'].items()))
-        return jsonify(records)
+            xml = dicttoxml(records, custom_root='sentences', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
 
     def get_book_details(self, sentenceId):
         with self._driver.session() as session:
@@ -183,7 +206,41 @@ class DBHandler(object):
         records = []
         for record in result:
             records.append(dict(record['n'].items()))
-        return jsonify(records)
+            xml = dicttoxml(records, custom_root='bookDetails', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
+
+    def get_image_with_caption(self, captionId):
+        with self._driver.session() as session:
+            return session.write_transaction(self._query_for_image_with_caption, captionId)
+
+    @staticmethod
+    def _query_for_image_with_caption(tx, captionId):
+        result = tx.run(
+            "MATCH (i:Image {image_id: {captionId}}) RETURN i",
+        captionId = int(captionId))
+        records = []
+        for record in result:
+            records.append(dict(record['i'].items()))
+            xml = dicttoxml(records, custom_root='imageDetails', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
+
+    def get_image_with_topic(self, topic):
+        with self._driver.session() as session:
+            return session.write_transaction(self._query_for_image_with_topic, topic)
+
+    @staticmethod
+    def _query_for_image_with_topic(tx, topic):
+        result = tx.run(
+            "MATCH (i:Image)<-[r2:IS_IN]-(t:Topic) WHERE t.word = {word} RETURN i, t ORDER BY t.score ASC",
+        word = topic)
+        records = []
+        for record in result:
+            records.append(dict(record['i'].items()))
+            xml = dicttoxml(records, custom_root='images', attr_type=False)
+            resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
 
 
 obj = DBHandler("bolt://localhost:7687")
@@ -269,6 +326,17 @@ def bookDetailsForSentence(sentenceId=None):
     response = obj.get_book_details(sentenceId)
     return response
 
+@app.route("/imageWithCaption/<captionId>")
+@requires_auth
+def imageWithCaption(captionId=None):
+    response = obj.get_image_with_caption(captionId)
+    return response
+
+@app.route("/imageWithTopic/<topic>")
+@requires_auth
+def imageWithTopic(topic=None):
+    response = obj.get_image_with_topic(topic)
+    return response
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
