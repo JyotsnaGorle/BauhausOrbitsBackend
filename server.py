@@ -242,6 +242,31 @@ class DBHandler(object):
             resp = Response(xml, status=200, mimetype='text/xml')
         return resp
 
+    def get_sentences_and_topics(self, bookId1, bookId2):
+        with self._driver.session() as session:
+            return session.write_transaction(self._query_for_sentences_and_topics, bookId1, bookId2)
+
+    @staticmethod
+    def _query_for_sentences_and_topics(tx, bookId1, bookId2):
+        result = tx.run(
+            "MATCH (b:Book)<-[r1:IS_IN]-(s:Sentence)<-[r2:IS_IN]-(t:Topic) WHERE b.book_id = 1 OR b.book_id = 2 AND t.score > 0.5 RETURN collect(t) as t,s",
+        bookId1 = int(bookId1),
+        bookId2 = int(bookId2))
+        records = []
+        for record in result:
+            sentence = dict(record['s'].items())
+
+            topic = record['t']
+            recordTopic = []
+            for each in topic:
+                a = dict(each.items())['word']
+                recordTopic.append(a)
+            sentence['topics'] = recordTopic
+            records.append(sentence)
+        xml = dicttoxml(records, custom_root='sentencesWithTopics', attr_type=False)
+        resp = Response(xml, status=200, mimetype='text/xml')
+        return resp
+
 
 obj = DBHandler("bolt://localhost:7687")
 
@@ -336,6 +361,16 @@ def imageWithCaption(captionId=None):
 @requires_auth
 def imageWithTopic(topic=None):
     response = obj.get_image_with_topic(topic)
+    return response
+
+@app.route("/sentencesAndTopics/<bookId1>/<bookId2>")
+@requires_auth
+def sentencesAndTopics(bookId1=None, bookId2=None):
+    if not bookId1:
+        bookId1=1
+    if not bookId2:
+        bookId2=2
+    response = obj.get_sentences_and_topics(bookId1, bookId2)
     return response
 
 if __name__ == "__main__":
